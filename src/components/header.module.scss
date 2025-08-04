@@ -1,0 +1,67 @@
+.headerLinkTo {
+  margin: 0;
+  display: block;
+  text-align: center;
+  padding: 0;
+}
+
+.headerLink {
+  margin: 0 5px;
+  font-family: Playwrite;
+  text-decoration: none;
+}
+
+.header {
+  position: fixed;
+  z-index: 999;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  box-shadow: 0 1px 7px var(--foreground);
+  height: 52px;
+  background-color: var(--background-transparent);
+  backdrop-filter: blur(3px);
+}
+
+.titleLink {
+  --gradientLeft: #02175c;
+  --gradientRight: #0072ff;
+  --gradientLeftHover: #02175cab;
+  --gradientRightHover: #0073ffab;
+}
+@media (prefers-color-scheme: dark) {
+  .titleLink {
+    --gradientLeft: #00c6ff;
+    --gradientLeftHober: #00c6ffab;
+  }
+}
+
+.titleLink {
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 29px;
+  font-family: Playwrite;
+  margin-right: 15px;
+  //背景にグラデーションを設定
+  background: linear-gradient(45deg, var(--gradientLeft), var(--gradientRight));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.titleLink:hover {
+  background: linear-gradient(45deg, var(--gradientLeftHover), var(--gradientRightHover));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.mainTitleMini, 
+.mainTitleMini:hover {
+  font-size: 16px;
+  font-family: Playwrite;
+  color: var(--foreground);
+  font-weight: bold;
+  margin: -9px 7px;
+  text-decoration: none;
+}

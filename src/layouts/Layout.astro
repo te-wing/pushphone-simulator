@@ -1,0 +1,27 @@
+---
+import Header from '../components/Header.astro';
+import styles from './layout.module.scss';
+import { ClientRouter } from 'astro:transitions';
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <ClientRouter />
+  </head>
+  <body class={styles.all}>
+    <div >
+      <Header />
+      <div transition:animate=slide>
+        <slot />
+      </div> 
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  @import '../styles/globals.scss';
+</style>

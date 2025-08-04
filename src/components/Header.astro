@@ -1,0 +1,14 @@
+---
+import styles from './header.module.scss';
+---
+
+<>
+  <header class={styles.header}>
+    <h1 class={styles.mainTitleMini}><a href="/" class={styles.titleLink}>Diaries</a> by <a href="https://wing.osaka" target="_blank" class={styles.mainTitleMini}>Wing</a></h1>
+    <div transition:animate=slide class={styles.headerLinkTo}>
+      <a class={styles.headerLink} href='/'>Home</a>
+      <a class={styles.headerLink} href='/posts'>Posts</a>
+      <a class={styles.headerLink} href='/tags'>Tags</a>
+    </div>
+  </header>
+</>
