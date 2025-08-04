@@ -13,10 +13,10 @@ import { ClientRouter } from 'astro:transitions';
     <ClientRouter />
   </head>
   <body class={styles.all}>
-    <div >
-      <div transition:animate=slide>
+    <div>
+      <div transition:animate=fade>
         <slot />
-      </div> 
+      </div>
       <Footer />
     </div>
   </body>

@@ -9,32 +9,10 @@
 }
 
 :root {
-  --background: #8cd7ff;
-  --background-transparent: rgb(140, 215, 255, 62%);
-  --foreground: #222222;
-  --description-text: #222222d7;
-  --sub-text: #222222af;
-  --a-default: #3f48ffcb;
-  --a-hover: #4d56ffa9;
-  --button-background: #b8e5ff;
-  --button-hover-border: #4d56ffa9;
-  --postcard-background: rgba(198, 234, 255, 0.62);
-  --postcard-border: rgb(198,234,255);
-  --tag-background: #e0f7fa;
-  --tag-background-hover: #b2ebf2;
-  --tag-foreground: #00796b;
+
 
   @media (prefers-color-scheme: dark) {
-    --background: #000242;
-    --background-transparent: rgb(0, 2, 66, 62%);
-    --foreground: #fffff1;
-    --description-text: #fffff1d7;
-    --sub-text: #fffff1af;
-    --a-default: #ffd6b0e7;
-    --a-hover: #ffd52ddc;
-    --button-background: #0044ff16;
-    --postcard-background: rgb(2, 0, 117, 32%);
-    --postcard-border: rgb(3, 0, 170);
+
   }
 }
 
@@ -43,29 +21,4 @@ body {
   margin: 0;
   width: 100%;
   height: 100%;
-}
-
-h1, h2 {
-  font-family: Playwrite;
-  text-align: center;
-}
-
-a, p, h3, h4 {
-  font-family: ZenMaru;
-}
-
-a {
-  color: var(--a-default);
-  :hover {
-    color: var(--a-hover);
-  }
-}
-
-p, h2, h3, h4, h5 {
-  color: var(--foreground);
-}
-
-img {
-  width: 100%;
-  height: auto;
 }
