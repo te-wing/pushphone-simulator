@@ -12,6 +12,8 @@ footer {
   justify-content: center;
   align-items: center;
 
+  padding: 0 15px;
+
   --footerBarBackground-left: #00000017;
   --footerBarBackground-right: #00000043;
   @media (prefers-color-scheme: dark) {
@@ -20,11 +22,11 @@ footer {
   }
 
   margin: 0 auto;
-  border-radius: 63px;
-  height: 63px;
+  border-radius: 37px;
+  height: 74px;
   min-width: 175px;
   background: linear-gradient(52deg, var(--footerBarBackground-left), var(--footerBarBackground-right));
-  
+
   backdrop-filter: blur(5px);
   -wevkit-backdrop-filter: blur(5px);
 }
