@@ -1,8 +1,23 @@
-.footer {
+footer {
   position: fixed;
   bottom: 18px;
-  left: 16px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.footerBar {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  --footerBarBackground-left: #00000017;
+  --footerBarBackground-right: #00000043;
+
+  margin: 0 auto;
+  border-radius: 63px;
+  height: 63px;
+  min-width: 175px;
+  background: linear-gradient(52deg, var(--footerBarBackground-left), var(--footerBarBackground-right));
 }
