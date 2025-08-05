@@ -1,9 +1,20 @@
 .dialpad {
   display: flex;
+  flex-direction: column;
+  height: 100%;
   align-items: center;
   justify-content: center;
+  width: 100%;
 }
 
 .keyrow {
   height: 100px;
+  display: flex;
+}
+
+.callButton {
+  background-color: rgb(0, 255, 170);
+  @media (prefers-color-scheme: dark) {
+    background: rgb(0, 182, 121);
+  }
 }
