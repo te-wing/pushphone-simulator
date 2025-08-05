@@ -1,11 +1,6 @@
 @font-face {
-  font-family: Playwrite;
-  src: url('/fonts/Playwrite.ttf');
-}
-
-@font-face {
-  font-family: ZenMaru;
-  src: url('/fonts/ZenMaru.ttf');
+  font-family: NotoSansJP;
+  src: url('/fonts/notosansjp.ttf');
 }
 
 :root {
@@ -14,13 +9,14 @@
   --button-background: #777777;
   --footerBarBackground-left: #00000017;
   --footerBarBackground-right: #00000043;
-  
   @media (prefers-color-scheme: dark) {
     --foreground: #ededed;
     --background: #222222;
     --footerBarBackground-left: #ffffffb8;
     --footerBarBackground-right: #ffffff8b;
   }
+
+  font-family: NotoSansJP;
 }
 
 html, body {
