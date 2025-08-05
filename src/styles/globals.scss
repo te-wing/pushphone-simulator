@@ -12,10 +12,14 @@
   --foreground: #1b1b1b;
   --background: #ededed;
   --button-background: #777777;
+  --footerBarBackground-left: #00000017;
+  --footerBarBackground-right: #00000043;
 
   @media (prefers-color-scheme: dark) {
     --foreground: #ededed;
     --background: #222222;
+    --footerBarBackground-left: #ffffffb8;
+    --footerBarBackground-right: #ffffff8b;
   }
 }
 

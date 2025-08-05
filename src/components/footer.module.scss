@@ -14,13 +14,6 @@ footer {
 
   padding: 0 15px;
 
-  --footerBarBackground-left: #00000017;
-  --footerBarBackground-right: #00000043;
-  @media (prefers-color-scheme: dark) {
-    --footerBarBackground-left: #ffffffb8;
-    --footerBarBackground-right: #ffffff8b;
-  }
-
   margin: 0 auto;
   border-radius: 37px;
   height: 74px;
