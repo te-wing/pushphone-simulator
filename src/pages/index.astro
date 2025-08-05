@@ -119,30 +119,33 @@ import styles from './index.module.scss';
     osc2.stop(audioCtx.currentTime + duration);
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const dialpad = document.getElementById('dialpad');
-    dialpad.addEventListener('click', (e) => {
-      if (e.target.tagName === 'BUTTON' && e.target.dataset.tone) {
-        playDTMF(e.target.dataset.tone);
-      }
-    });
-  });
-
-	document.addEventListener('DOMContentLoaded', () => {
-	  const buttons = document.querySelectorAll('[data-tone]');
-  	const phoneDisplay = document.getElementById('phonenumber');
-
-	  buttons.forEach(button => {
-  	  button.addEventListener('click', () => {
-    	  const tone = button.dataset.tone;
-      	phoneDisplay.textContent += tone;
-	    });
+	const dialpad = document.getElementById('dialpad');
+	if (dialpad) {
+  	dialpad.addEventListener('click', (e) => {
+    	if (e.target.tagName === 'BUTTON' && e.target.dataset.tone) {
+      	playDTMF(e.target.dataset.tone);
+    	}
   	});
-	});
+	}
 
-	document.getElementById("callButton").addEventListener("click", function() {
-    document.getElementById("phonenumber").textContent = "Dial: ";
-  });
+	const buttons = document.querySelectorAll('[data-tone]');
+	const phoneDisplay = document.getElementById('phonenumber');
+
+	if (buttons.length > 0 && phoneDisplay) {
+  	buttons.forEach(button => {
+    	button.addEventListener('click', () => {
+      	const tone = button.dataset.tone;
+	      phoneDisplay.textContent += tone;
+  	  });
+  	});
+	}
+
+	const callButton = document.getElementById("callButton");
+	if (callButton) {
+  	callButton.addEventListener("click", function() {
+    	document.getElementById("phonenumber").textContent = "Dial: ";
+	  });
+	}
 </script>
 
 <style>
@@ -171,6 +174,5 @@ import styles from './index.module.scss';
 
 	h1 {
 		font-size: 1.4em;
-
 	}
 </style>
