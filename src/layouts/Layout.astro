@@ -1,7 +1,6 @@
 ---
 import Footer from '../components/Footer.astro';
 import styles from './layout.module.scss';
-import { ClientRouter } from 'astro:transitions';
 ---
 
 <!doctype html>
@@ -11,11 +10,10 @@ import { ClientRouter } from 'astro:transitions';
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
-    <ClientRouter />
   </head>
   <body>
     <div>
-      <div transition:animate=fade>
+      <div>
         <slot />
       </div>
       <Footer />
