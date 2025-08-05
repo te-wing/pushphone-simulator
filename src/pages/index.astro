@@ -8,48 +8,48 @@ import styles from './index.module.scss';
 		<title>Dialpad</title>
 	</head>
 	<section>
-		<div class={styles.dialpad}>
+		<div id="dialpad" class={styles.dialpad}>
 			<div class={styles.keyrow}>
-				<button>
+				<button data-tone="1">
 					１
 				</button>
-				<button>
+				<button data-tone="2">
 					２
 				</button>
-				<button>
+				<button data-tone="3">
 					３
 				</button>
 			</div>
 			<div class={styles.keyrow}>
-				<button>
+				<button data-tone="4">
 					４
 				</button>
-				<button>
+				<button data-tone="5">
 					５
 				</button>
-				<button>
+				<button data-tone="6">
 					６
 				</button>
 			</div>
 			<div class={styles.keyrow}>
-				<button>
+				<button data-tone="7">
 					７
 				</button>
-				<button>
+				<button data-tone="8">
 					８
 				</button>
-				<button>
+				<button data-tone="9">
 					９
 				</button>
 			</div>
 			<div class={styles.keyrow}>
-				<button>
+				<button data-tone="*">
 					＊
 				</button>
-				<button>
+				<button data-tone="0">
 					０
 				</button>
-				<button>
+				<button data-tone="#">
 					＃
 				</button>
 			</div>
@@ -61,6 +61,71 @@ import styles from './index.module.scss';
 		</div>
 	</section>
 </Layout>
+
+<script is:inline>
+  // DTMF周波数対応表
+  const dtmfFrequencies = {
+    '1': [697, 1209],
+    '2': [697, 1336],
+    '3': [697, 1477],
+    '4': [770, 1209],
+    '5': [770, 1336],
+    '6': [770, 1477],
+    '7': [852, 1209],
+    '8': [852, 1336],
+    '9': [852, 1477],
+    '*': [941, 1209],
+    '0': [941, 1336],
+    '#': [941, 1477],
+  };
+
+  // AudioContext作成
+  let audioCtx;
+  function playDTMF(tone) {
+    if (!audioCtx) {
+      audioCtx = new AudioContext();
+    }
+
+    const [f1, f2] = dtmfFrequencies[tone] || [];
+    if (!f1 || !f2) return;
+
+    const duration = 0.2; // 秒
+
+    // オシレーター作成
+    const osc1 = audioCtx.createOscillator();
+    const osc2 = audioCtx.createOscillator();
+    const gainNode = audioCtx.createGain();
+
+    osc1.frequency.value = f1;
+    osc2.frequency.value = f2;
+
+    osc1.type = 'sine';
+    osc2.type = 'sine';
+
+    // 2つのオシレーターをGainに繋げる
+    osc1.connect(gainNode);
+    osc2.connect(gainNode);
+    gainNode.connect(audioCtx.destination);
+
+    // 音量調整
+    gainNode.gain.setValueAtTime(0.2, audioCtx.currentTime);
+
+    osc1.start();
+    osc2.start();
+
+    osc1.stop(audioCtx.currentTime + duration);
+    osc2.stop(audioCtx.currentTime + duration);
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const dialpad = document.getElementById('dialpad');
+    dialpad.addEventListener('click', (e) => {
+      if (e.target.tagName === 'BUTTON' && e.target.dataset.tone) {
+        playDTMF(e.target.dataset.tone);
+      }
+    });
+  });
+</script>
 
 <style>
 	section {
