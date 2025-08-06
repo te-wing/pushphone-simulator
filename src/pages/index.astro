@@ -134,15 +134,23 @@ import styles from './index.module.scss';
 
 	let callingTo = "";
 	let isNowCalling = false;
+	let isNotFirstPushWhileCalling = false;
 
 	if (buttons.length > 0 && phoneDisplay) {
   	buttons.forEach(button => {
     	button.addEventListener('click', () => {
       	const tone = button.dataset.tone;
-
-      	// callingToに追加
-      	callingTo += tone;
-
+				if ( isNowCalling == false ) {
+      		// callingToに追加
+      		callingTo += tone;
+				} else {
+					if (isNotFirstPushWhileCalling === false) {
+						isNotFirstPushWhileCalling = true;
+						callingTo = tone;
+					} else {
+						callingTo += tone;
+					}
+				}
       	// 表示を更新
       	phoneDisplay.textContent = "Dial: " + callingTo;
     	});
@@ -152,6 +160,7 @@ import styles from './index.module.scss';
 	document.getElementById('callButton').addEventListener('click', function () {
   	if ( isNowCalling === false ) {
 			isNowCalling = true;
+			isNotFirstPushWhileCalling = false;
 			console.log("発信しました（嘘）");
 		} else {
 			isNowCalling = false;
