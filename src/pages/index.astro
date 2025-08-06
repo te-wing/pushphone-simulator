@@ -119,6 +119,7 @@ import styles from './index.module.scss';
     osc2.stop(audioCtx.currentTime + duration);
   }
 
+	// 音
 	const dialpad = document.getElementById('dialpad');
 	if (dialpad) {
   	dialpad.addEventListener('click', (e) => {
@@ -131,21 +132,34 @@ import styles from './index.module.scss';
 	const buttons = document.querySelectorAll('[data-tone]');
 	const phoneDisplay = document.getElementById('phonenumber');
 
+	let callingTo = "";
+	let isNowCalling = false;
+
 	if (buttons.length > 0 && phoneDisplay) {
   	buttons.forEach(button => {
     	button.addEventListener('click', () => {
       	const tone = button.dataset.tone;
-	      phoneDisplay.textContent += tone;
-  	  });
+
+      	// callingToに追加
+      	callingTo += tone;
+
+      	// 表示を更新
+      	phoneDisplay.textContent = "Dial: " + callingTo;
+    	});
   	});
 	}
 
-	const callButton = document.getElementById("callButton");
-	if (callButton) {
-  	callButton.addEventListener("click", function() {
-    	document.getElementById("phonenumber").textContent = "Dial: ";
-	  });
-	}
+	document.getElementById('callButton').addEventListener('click', function () {
+  	if ( isNowCalling === false ) {
+			isNowCalling = true;
+			console.log("発信しました（嘘）");
+		} else {
+			isNowCalling = false;
+			callingTo = "";
+			phoneDisplay.textContent = "Dial:" + callingTo;
+			console.log("通話を終了しました（嘘）");
+		}
+	});
 </script>
 
 <style>
